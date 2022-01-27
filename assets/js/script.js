@@ -31,5 +31,15 @@ function listMaker(scoreInfo) {
 
   highScore.appendChild(scoreList);
 
+  myFunction();
 
+};
+
+// Remove header upon saving score
+function myFunction() {
+  var mainHeader = document.querySelector("#main-header");
+  mainHeader.remove();
+
+//   var test = document.querySelector(".score-list");
+//   test.remove();
 };
