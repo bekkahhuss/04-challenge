@@ -1,45 +1,30 @@
-// Variables to collect and save the user score
-var hitButton = document.querySelector("#save-score");
-var highScore = document.querySelector("#high-score");
+// These variables represent the html elements in main. They will be reused as needed as the quiz goes from page to page.
+var mainContainer = document.querySelector("#main-container");
+var pageHeading = document.querySelector("#page-heading");
+var quizText = document.querySelector("#quiz-text");
+var answerButtons = document.querySelector("#answer-buttons");
+var easyButton = document.querySelector("#easy-button");
 
-// Click the button to save score 
-hitButton.addEventListener("click", scoreHolder);
-
-
-// Input name and save it in var scoreInfo
-function scoreHolder() {
-  var saveName = document.querySelector("input[name='save-name']").value;
-
-  var scoreInfo = {
-    name: saveName,
-    score: ""
-  }
-
-  listMaker(scoreInfo);
-};
-
-// Add user name and score to high score list 
-function listMaker(scoreInfo) {
-  var scoreList = document.createElement("li");
-  scoreList.className ="score-list";
-
-  var scoreItem = document.createElement("div");
-  scoreItem.className = "score-item";
-  scoreItem.innerHTML= "<h3>" + scoreInfo.name + "</h3>";
-
-  scoreList.appendChild(scoreItem);
-
-  highScore.appendChild(scoreList);
-
-  myFunction();
+function startPage() {
 
 };
 
-// Remove header upon saving score
-function myFunction() {
-  var mainHeader = document.querySelector("#main-header");
-  mainHeader.remove();
+function question1() {
 
-//   var test = document.querySelector(".score-list");
-//   test.remove();
 };
+
+function question2() {
+
+};
+
+function question3() {
+
+};
+
+function saveScore() {
+
+};
+
+function endPage() {
+
+}:
