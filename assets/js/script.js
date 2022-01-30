@@ -2,10 +2,8 @@
 var sectionOne = document.querySelector("#section-one");
 var sectionTwo = document.querySelector("#section-two");
 var sectionThree = document.querySelector("#section-three");
-// var pageHeading = document.getElementById("#page-heading");
-// var quizText = document.querySelector("#quiz-text");
-// var answerButtons = document.querySelector("#answer-buttons");
-// var easyButton = document.querySelector("#easy-button");
+
+//Page content variables 
 const pageHeading = document.createElement("h1");
 const quizText = document.createElement("p");
 
@@ -28,6 +26,15 @@ const tenAns = document.createElement("button");
 const elevenAns = document.createElement("button");
 const twelveAns = document.createElement("button");
 
+var answerText = [
+ 'oneAns', 'twoAns','threeAns','fourAns',
+'fiveAns','sixAns', 'sevenAns', 'eightAns',
+ 'nineAns', 'tenAns', 'elevenAns', 'twelveAns'
+];
+
+var ansButtons = [];
+
+
 //Save Initials 
 const yourInitials = document.createElement("input");
 var scoreList = document.createElement("ul");
@@ -35,16 +42,13 @@ scoreList.className ="score-list";
 
 
 
-
+function rightWrong() {
+  console.log('wrong');
+  
+  
+};
 
 // When the start button is pushed leave start page, ask three questions, input initials to save score, view highscore and restart. 
-// function codingQuiz() {
-//   console.log("quiz");
-//   question1();
-
-// };
-
-//default page with button that starts codingQuiz function
 function startPage() {
   pageHeading.innerText = "Coding Assessment";
   sectionOne.appendChild(pageHeading);
@@ -56,28 +60,82 @@ function startPage() {
   restartButton.remove();
   saveButton.remove();
   scoreList.remove();
+  answerButtons();
 
 console.log("hello");
 };
 
+var test2 = 0;
 
+function answerButtons() {
+  for (var i = 0; i < 13; i++) {
+    ansButtons[i] = document.createElement ("button");
+    ansButtons[i].innerText = answerText[i];
+    ansButtons[i].className ="ansBtn";
+    ansButtons[i].setAttribute('id', "ansBtn" + i);
+
+    
+    // ansButtons[i].addEventListener( 'click',
+    //   if (ansBtn0) {
+    //     question2
+    //   }
+    //   else {}
+    // )
+  };
+  
+  
+};
 
 function question1() {
   pageHeading.innerText = "Question 1";
   quizText.innerText = "Is this a question?";
   easyButton.remove();
-
+  //var test = document.querySelector("button[id='ansBtn1']");
+  
+  
   // could turn into a for loop 
-  oneAns.innerText = "Answer 1";
-  sectionTwo.appendChild(oneAns);
-  twoAns.innerText = "Answer 2";
-  sectionTwo.appendChild(twoAns);
-  threeAns.innerText = "Answer 3";
-  sectionTwo.appendChild(threeAns);
-  threeAns.addEventListener('click', question2);
-  fourAns.innerText = "Answer 4";
-  sectionTwo.appendChild(fourAns); 
+  // oneAns.innerText = "Answer 1";
+  // sectionTwo.appendChild(oneAns);
+  // twoAns.innerText = "Answer 2";
+  // sectionTwo.appendChild(twoAns);
+  // threeAns.innerText = "Answer 3";
+  // sectionTwo.appendChild(threeAns);
+  // threeAns.addEventListener('click', question2);
+  // fourAns.innerText = "Answer 4";
+  // for (var i =0; i < 1;) {
+  //   sectionTwo.appendChild(ansButtons[i]);
+  //   ansButtons[i].addEventListener("click", function() {
 
+  //     console.log("right button clicked")
+  //   });
+  // };
+
+  for (var i = 0; i < 4; i++) {
+    
+    sectionTwo.appendChild(ansButtons[i]);
+    ansButtons[i].addEventListener("click", function() {
+
+      console.log("some button clicked")
+    });
+
+    // find data-id
+    //if data-id = some value, then console log ... just for testing
+    // maybe need an event listener but you may be able to use a queryselector 
+  };
+
+  
+  // if (Event.target > 1) {
+  //   console.log('right');
+
+  // }
+  // else {
+  //   console.log('wrong');
+  // };
+  
+  // if (ansButtons[0]) {
+  //   console.log("test");
+  // };
+  
 };
 
 function question2() {
@@ -150,10 +208,6 @@ function endPage() {
   pageHeading.innerText = "High Score";
   restartButton.innerText = "Play Again?";
   console.log(yourInitials.value);
-
-  // var scoreList = document.createElement("ul");
-  // scoreList.className ="score-list";
-  // scoreList.innerText = (yourInitials.value);
 
   var scoreItem = document.createElement("li");
   scoreItem.className = "score-item";
