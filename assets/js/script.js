@@ -1,5 +1,7 @@
 // These variables represent the html elements in main. They will be reused as needed as the quiz goes from page to page.
-var mainContainer = document.querySelector("#main-container");
+var sectionOne = document.querySelector("#section-one");
+var sectionTwo = document.querySelector("#section-two");
+var sectionThree = document.querySelector("#section-three");
 // var pageHeading = document.getElementById("#page-heading");
 // var quizText = document.querySelector("#quiz-text");
 // var answerButtons = document.querySelector("#answer-buttons");
@@ -28,6 +30,8 @@ const twelveAns = document.createElement("button");
 
 //Save Initials 
 const yourInitials = document.createElement("input");
+var scoreList = document.createElement("ul");
+scoreList.className ="score-list";
 
 
 
@@ -43,11 +47,11 @@ const yourInitials = document.createElement("input");
 //default page with button that starts codingQuiz function
 function startPage() {
   pageHeading.innerText = "Coding Assessment";
-  document.body.appendChild(pageHeading);
+  sectionOne.appendChild(pageHeading);
   quizText.innerText = "Click Start to Begin";
-  document.body.appendChild(quizText);
+  sectionOne.appendChild(quizText);
   easyButton.innerText = "Start Assessment";
-  document.body.appendChild(easyButton);
+  sectionThree.appendChild(easyButton);
   easyButton.addEventListener( 'click', question1);
   restartButton.remove();
   saveButton.remove();
@@ -65,14 +69,14 @@ function question1() {
 
   // could turn into a for loop 
   oneAns.innerText = "Answer 1";
-  document.body.appendChild(oneAns);
+  sectionTwo.appendChild(oneAns);
   twoAns.innerText = "Answer 2";
-  document.body.appendChild(twoAns);
+  sectionTwo.appendChild(twoAns);
   threeAns.innerText = "Answer 3";
-  document.body.appendChild(threeAns);
+  sectionTwo.appendChild(threeAns);
   threeAns.addEventListener('click', question2);
   fourAns.innerText = "Answer 4";
-  document.body.appendChild(fourAns);
+  sectionTwo.appendChild(fourAns); 
 
 };
 
@@ -87,14 +91,14 @@ function question2() {
 
 
   fiveAns.innerText = "Answer 5";
-  document.body.appendChild(fiveAns);
+  sectionTwo.appendChild(fiveAns);
   sixAns.innerText = "Answer 6";
-  document.body.appendChild(sixAns);
+  sectionTwo.appendChild(sixAns);
   sixAns.addEventListener('click', question3);
   sevenAns.innerText = "Answer 7";
-  document.body.appendChild(sevenAns);
+  sectionTwo.appendChild(sevenAns);
   eightAns.innerText = "Answer 4";
-  document.body.appendChild(eightAns);
+  sectionTwo.appendChild(eightAns);
 };
 
 function question3() {
@@ -107,13 +111,13 @@ function question3() {
 
 
   nineAns.innerText = "Answer 9";
-  document.body.appendChild(nineAns);
+  sectionTwo.appendChild(nineAns);
   tenAns.innerText = "Answer 10";
-  document.body.appendChild(tenAns);
+  sectionTwo.appendChild(tenAns);
   elevenAns.innerText = "Answer 11";
-  document.body.appendChild(elevenAns);
+  sectionTwo.appendChild(elevenAns);
   twelveAns.innerText = "Answer 12";
-  document.body.appendChild(twelveAns);
+  sectionTwo.appendChild(twelveAns);
   twelveAns.addEventListener('click', saveScore);
 };
 
@@ -126,9 +130,9 @@ function saveScore() {
   twelveAns.remove();
 
 
-  document.body.appendChild(yourInitials);
+  sectionTwo.appendChild(yourInitials);
   saveButton.innerText = "Save"
-  document.body.appendChild(saveButton);
+  sectionThree.appendChild(saveButton);
 
   saveButton.addEventListener('click', endPage);
   
@@ -147,8 +151,8 @@ function endPage() {
   restartButton.innerText = "Play Again?";
   console.log(yourInitials.value);
 
-  var scoreList = document.createElement("ul");
-  scoreList.className ="score-list";
+  // var scoreList = document.createElement("ul");
+  // scoreList.className ="score-list";
   // scoreList.innerText = (yourInitials.value);
 
   var scoreItem = document.createElement("li");
@@ -157,9 +161,9 @@ function endPage() {
 
   scoreList.appendChild(scoreItem);
 
-  document.body.appendChild(scoreList);
+  sectionTwo.appendChild(scoreList);
 
-  document.body.appendChild(restartButton);
+  sectionThree.appendChild(restartButton);
   restartButton.addEventListener('click', startPage);
 }
 
