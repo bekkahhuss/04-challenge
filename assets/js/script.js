@@ -37,6 +37,7 @@ var taskIdCounter = 0;
 
 //Save Initials 
 const yourInitials = document.createElement("input");
+yourInitials.setAttribute("id", "my-initials");
 var scoreList = document.createElement("ul");
 scoreList.className ="score-list";
 
@@ -61,8 +62,10 @@ function startPage() {
   saveButton.remove();
   scoreList.remove();
   answerButtons();
-
-console.log("hello");
+  taskIdCounter = 0;
+  // const inputField = document.getElementById("data-input-id");
+  // console.log(yourInitials.value);
+  console.log("hello");
 };
 
 var test2 = 0;
@@ -166,6 +169,10 @@ function question2() {
   // twoAns.remove();
   // threeAns.remove();
   // fourAns.remove();
+  ansButtons[0].remove();
+  ansButtons[1].remove();
+  ansButtons[2].remove();
+  ansButtons[3].remove();
 
   for (var i = 4; i < 8; i++) {
     sectionTwo.appendChild(ansButtons[i]);
@@ -201,6 +208,10 @@ function question3() {
   // sixAns.remove();
   // sevenAns.remove();
   // eightAns.remove();
+  ansButtons[4].remove();
+  ansButtons[5].remove();
+  ansButtons[6].remove();
+  ansButtons[7].remove();
 
   for (var i = 8; i < 12; i++) {
       sectionTwo.appendChild(ansButtons[i]);
@@ -238,6 +249,10 @@ function saveScore() {
   // tenAns.remove();
   // elevenAns.remove();
   // twelveAns.remove();
+  ansButtons[8].remove();
+  ansButtons[9].remove();
+  ansButtons[10].remove();
+  ansButtons[11].remove();
 
 
   sectionTwo.appendChild(yourInitials);
