@@ -16,9 +16,9 @@ const restartButton = document.createElement('button');
 //Answer buttons 
 
 var answerText = [
- 'oneAns', 'twoAns','threeAns','fourAns',
-'fiveAns','sixAns', 'sevenAns', 'eightAns',
- 'nineAns', 'tenAns', 'elevenAns', 'twelveAns'
+ 'no', 'yes','no','no',
+'no','no', 'no', 'yes',
+ 'yes', 'no', 'yes', 'yes'
 ];
 
 var ansButtons = [];
@@ -49,7 +49,7 @@ function startPage() {
   scoreList.remove();
   answerButtons();
   taskIdCounter = 0;
-  count = 10;
+  count = 20;
   timer.innerText = count;
   console.log("hello");
 };
