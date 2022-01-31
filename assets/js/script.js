@@ -33,7 +33,7 @@ var answerText = [
 ];
 
 var ansButtons = [];
-
+var taskIdCounter = 0;
 
 //Save Initials 
 const yourInitials = document.createElement("input");
@@ -72,7 +72,9 @@ function answerButtons() {
     ansButtons[i] = document.createElement ("button");
     ansButtons[i].innerText = answerText[i];
     ansButtons[i].className ="ansBtn";
-    ansButtons[i].setAttribute('id', "ansBtn" + i);
+    ansButtons[i].setAttribute("data-ans-id", taskIdCounter);
+    taskIdCounter++;
+    // ansButtons[i].setAttribute('id', "ansBtn" + i);
 
     
     // ansButtons[i].addEventListener( 'click',
@@ -102,6 +104,8 @@ function question1() {
   // sectionTwo.appendChild(threeAns);
   // threeAns.addEventListener('click', question2);
   // fourAns.innerText = "Answer 4";
+  
+  
   // for (var i =0; i < 1;) {
   //   sectionTwo.appendChild(ansButtons[i]);
   //   ansButtons[i].addEventListener("click", function() {
@@ -111,81 +115,129 @@ function question1() {
   // };
 
   for (var i = 0; i < 4; i++) {
-    
     sectionTwo.appendChild(ansButtons[i]);
-    ansButtons[i].addEventListener("click", function() {
-
-      console.log("some button clicked")
+    ansButtons[i].addEventListener("click", function(event) {
+      var ansId = event.target.getAttribute("data-ans-id");
+      console.log(event.target);
+      console.log("clicked");
+      console.log(ansId);
+      if (ansId == 1) {
+        console.log("eureka!");
+        question2();
+      } else {
+        console.log("nope!");
+      }
     });
 
-    // find data-id
-    //if data-id = some value, then console log ... just for testing
-    // maybe need an event listener but you may be able to use a queryselector 
+    
+
+      // ansButtons[i].addEventListener("click", function(event) {
+      //   var correct = event.target.getAttribute("data-ans-id");
+      //   if (correct = 1) {
+      //     console.log("correct");
+      // }});
+
+      // find data-id
+      //if data-id = some value, then console log ... just for testing
+      // maybe need an event listener but you may be able to use a queryselector 
+    
+
+  
+    // if (Event.target > 1) {
+    //   console.log('right');
+
+    // }
+    // else {
+    //   console.log('wrong');
+    // };
+    
+    // if (ansButtons[0]) {
+    //   console.log("test");
+    // };
+    
   };
-
-  
-  // if (Event.target > 1) {
-  //   console.log('right');
-
-  // }
-  // else {
-  //   console.log('wrong');
-  // };
-  
-  // if (ansButtons[0]) {
-  //   console.log("test");
-  // };
-  
-};
+}
 
 function question2() {
   pageHeading.innerText = "Question 2";
   quizText.innerText = "Is this a different question?";
   easyButton.remove();
-  oneAns.remove();
-  twoAns.remove();
-  threeAns.remove();
-  fourAns.remove();
+  // oneAns.remove();
+  // twoAns.remove();
+  // threeAns.remove();
+  // fourAns.remove();
 
+  for (var i = 4; i < 8; i++) {
+    sectionTwo.appendChild(ansButtons[i]);
+    ansButtons[i].addEventListener("click", function(event) {
+      var ansId = event.target.getAttribute("data-ans-id");
+      console.log(event.target);
+      console.log("clicked");
+      console.log(ansId);
+      if (ansId == 7) {
+        console.log("eureka!");
 
-  fiveAns.innerText = "Answer 5";
-  sectionTwo.appendChild(fiveAns);
-  sixAns.innerText = "Answer 6";
-  sectionTwo.appendChild(sixAns);
-  sixAns.addEventListener('click', question3);
-  sevenAns.innerText = "Answer 7";
-  sectionTwo.appendChild(sevenAns);
-  eightAns.innerText = "Answer 4";
-  sectionTwo.appendChild(eightAns);
+        question3();
+      } else {
+        console.log("nope!");
+      }
+    });
+  }
+  // fiveAns.innerText = "Answer 5";
+  // sectionTwo.appendChild(fiveAns);
+  // sixAns.innerText = "Answer 6";
+  // sectionTwo.appendChild(sixAns);
+  // sixAns.addEventListener('click', question3);
+  // sevenAns.innerText = "Answer 7";
+  // sectionTwo.appendChild(sevenAns);
+  // eightAns.innerText = "Answer 4";
+  // sectionTwo.appendChild(eightAns);
 };
 
 function question3() {
   pageHeading.innerText = "Question 3";
   quizText.innerText = "Is this question the same?";
-  fiveAns.remove();
-  sixAns.remove();
-  sevenAns.remove();
-  eightAns.remove();
+  // fiveAns.remove();
+  // sixAns.remove();
+  // sevenAns.remove();
+  // eightAns.remove();
+
+  for (var i = 8; i < 12; i++) {
+      sectionTwo.appendChild(ansButtons[i]);
+      ansButtons[i].addEventListener("click", function(event) {
+        var ansId = event.target.getAttribute("data-ans-id");
+        console.log(event.target);
+        console.log("clicked");
+        console.log(ansId);
+        if (ansId == 9) {
+          console.log("eureka!");
+          saveScore();
+        } else {
+          console.log("nope!");
+        }
+      });
+    }
 
 
-  nineAns.innerText = "Answer 9";
-  sectionTwo.appendChild(nineAns);
-  tenAns.innerText = "Answer 10";
-  sectionTwo.appendChild(tenAns);
-  elevenAns.innerText = "Answer 11";
-  sectionTwo.appendChild(elevenAns);
-  twelveAns.innerText = "Answer 12";
-  sectionTwo.appendChild(twelveAns);
-  twelveAns.addEventListener('click', saveScore);
+  
+  // nineAns.innerText = "Answer 9";
+  // sectionTwo.appendChild(nineAns);
+  // tenAns.innerText = "Answer 10";
+  // sectionTwo.appendChild(tenAns);
+  // elevenAns.innerText = "Answer 11";
+  // sectionTwo.appendChild(elevenAns);
+  // twelveAns.innerText = "Answer 12";
+  // sectionTwo.appendChild(twelveAns);
+  // twelveAns.addEventListener('click', saveScore);
 };
 
 function saveScore() {
   pageHeading.innerText = "Save Score";
   quizText.remove();
-  nineAns.remove();
-  tenAns.remove();
-  elevenAns.remove();
-  twelveAns.remove();
+  // nineAns.remove();
+  // tenAns.remove();
+  // elevenAns.remove();
+  // twelveAns.remove();
 
 
   sectionTwo.appendChild(yourInitials);
