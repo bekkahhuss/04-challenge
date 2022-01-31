@@ -77,15 +77,7 @@ function answerButtons() {
     ansButtons[i].className ="ansBtn";
     ansButtons[i].setAttribute("data-ans-id", taskIdCounter);
     taskIdCounter++;
-    // ansButtons[i].setAttribute('id', "ansBtn" + i);
-
     
-    // ansButtons[i].addEventListener( 'click',
-    //   if (ansBtn0) {
-    //     question2
-    //   }
-    //   else {}
-    // )
   };
   
   
@@ -95,28 +87,7 @@ function question1() {
   pageHeading.innerText = "Question 1";
   quizText.innerText = "Is this a question?";
   easyButton.remove();
-  //var test = document.querySelector("button[id='ansBtn1']");
   
-  
-  // could turn into a for loop 
-  // oneAns.innerText = "Answer 1";
-  // sectionTwo.appendChild(oneAns);
-  // twoAns.innerText = "Answer 2";
-  // sectionTwo.appendChild(twoAns);
-  // threeAns.innerText = "Answer 3";
-  // sectionTwo.appendChild(threeAns);
-  // threeAns.addEventListener('click', question2);
-  // fourAns.innerText = "Answer 4";
-  
-  
-  // for (var i =0; i < 1;) {
-  //   sectionTwo.appendChild(ansButtons[i]);
-  //   ansButtons[i].addEventListener("click", function() {
-
-  //     console.log("right button clicked")
-  //   });
-  // };
-
   for (var i = 0; i < 4; i++) {
     sectionTwo.appendChild(ansButtons[i]);
     ansButtons[i].addEventListener("click", function(event) {
@@ -131,32 +102,6 @@ function question1() {
         console.log("nope!");
       }
     });
-
-    
-
-      // ansButtons[i].addEventListener("click", function(event) {
-      //   var correct = event.target.getAttribute("data-ans-id");
-      //   if (correct = 1) {
-      //     console.log("correct");
-      // }});
-
-      // find data-id
-      //if data-id = some value, then console log ... just for testing
-      // maybe need an event listener but you may be able to use a queryselector 
-    
-
-  
-    // if (Event.target > 1) {
-    //   console.log('right');
-
-    // }
-    // else {
-    //   console.log('wrong');
-    // };
-    
-    // if (ansButtons[0]) {
-    //   console.log("test");
-    // };
     
   };
 }
@@ -165,10 +110,7 @@ function question2() {
   pageHeading.innerText = "Question 2";
   quizText.innerText = "Is this a different question?";
   easyButton.remove();
-  // oneAns.remove();
-  // twoAns.remove();
-  // threeAns.remove();
-  // fourAns.remove();
+  
   ansButtons[0].remove();
   ansButtons[1].remove();
   ansButtons[2].remove();
@@ -190,24 +132,13 @@ function question2() {
       }
     });
   }
-  // fiveAns.innerText = "Answer 5";
-  // sectionTwo.appendChild(fiveAns);
-  // sixAns.innerText = "Answer 6";
-  // sectionTwo.appendChild(sixAns);
-  // sixAns.addEventListener('click', question3);
-  // sevenAns.innerText = "Answer 7";
-  // sectionTwo.appendChild(sevenAns);
-  // eightAns.innerText = "Answer 4";
-  // sectionTwo.appendChild(eightAns);
+  
 };
 
 function question3() {
   pageHeading.innerText = "Question 3";
   quizText.innerText = "Is this question the same?";
-  // fiveAns.remove();
-  // sixAns.remove();
-  // sevenAns.remove();
-  // eightAns.remove();
+  
   ansButtons[4].remove();
   ansButtons[5].remove();
   ansButtons[6].remove();
@@ -228,27 +159,12 @@ function question3() {
         }
       });
     }
-
-
-  
-  // nineAns.innerText = "Answer 9";
-  // sectionTwo.appendChild(nineAns);
-  // tenAns.innerText = "Answer 10";
-  // sectionTwo.appendChild(tenAns);
-  // elevenAns.innerText = "Answer 11";
-  // sectionTwo.appendChild(elevenAns);
-  // twelveAns.innerText = "Answer 12";
-  // sectionTwo.appendChild(twelveAns);
-  // twelveAns.addEventListener('click', saveScore);
 };
 
 function saveScore() {
   pageHeading.innerText = "Save Score";
   quizText.remove();
-  // nineAns.remove();
-  // tenAns.remove();
-  // elevenAns.remove();
-  // twelveAns.remove();
+  
   ansButtons[8].remove();
   ansButtons[9].remove();
   ansButtons[10].remove();
@@ -262,11 +178,6 @@ function saveScore() {
   saveButton.addEventListener('click', endPage);
   
 };
-
-// var scoreInfo = {
-//   name: yourInitials,
-//   score: ""
-// }
 
 
 function endPage() {
