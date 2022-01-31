@@ -2,6 +2,7 @@
 var sectionOne = document.querySelector("#section-one");
 var sectionTwo = document.querySelector("#section-two");
 var sectionThree = document.querySelector("#section-three");
+var timer = document.querySelector("#timer");
 
 //Page content variables 
 const pageHeading = document.createElement("h1");
@@ -13,18 +14,6 @@ const saveButton = document.createElement('button');
 const restartButton = document.createElement('button');
 
 //Answer buttons 
-const oneAns = document.createElement("button");
-const twoAns = document.createElement("button");
-const threeAns = document.createElement("button");
-const fourAns = document.createElement("button");
-const fiveAns = document.createElement("button");
-const sixAns = document.createElement("button");
-const sevenAns = document.createElement("button");
-const eightAns = document.createElement("button");
-const nineAns = document.createElement("button");
-const tenAns = document.createElement("button");
-const elevenAns = document.createElement("button");
-const twelveAns = document.createElement("button");
 
 var answerText = [
  'oneAns', 'twoAns','threeAns','fourAns',
@@ -41,13 +30,8 @@ yourInitials.setAttribute("id", "my-initials");
 var scoreList = document.createElement("ul");
 scoreList.className ="score-list";
 
+var count = 0; 
 
-
-function rightWrong() {
-  console.log('wrong');
-  
-  
-};
 
 // When the start button is pushed leave start page, ask three questions, input initials to save score, view highscore and restart. 
 function startPage() {
@@ -58,13 +42,15 @@ function startPage() {
   easyButton.innerText = "Start Assessment";
   sectionThree.appendChild(easyButton);
   easyButton.addEventListener( 'click', question1);
+ 
   restartButton.remove();
   saveButton.remove();
+  
   scoreList.remove();
   answerButtons();
   taskIdCounter = 0;
-  // const inputField = document.getElementById("data-input-id");
-  // console.log(yourInitials.value);
+  count = 10;
+  timer.innerText = count;
   console.log("hello");
 };
 
@@ -80,10 +66,25 @@ function answerButtons() {
     
   };
   
-  
 };
 
 function question1() {
+  var intervalOne = setInterval(function(){
+    timer.innerText = count;
+    if (count > 0) {
+      count = count - 1;
+    } else {
+      count = 0;
+    }
+    timer.innerText = count;
+    console.log('COUNT ', count);
+    if (count === 0 || count < 0){
+      console.log('interval:', intervalOne);
+      clearInterval(intervalOne);
+      saveScore();
+    }
+  }, 1000);
+
   pageHeading.innerText = "Question 1";
   quizText.innerText = "Is this a question?";
   easyButton.remove();
@@ -100,11 +101,17 @@ function question1() {
         question2();
       } else {
         console.log("nope!");
+        count = count - 2;
+        if (count <= 0) {
+          timeTest = 0;
+        }
       }
     });
+
+    
     
   };
-}
+};
 
 function question2() {
   pageHeading.innerText = "Question 2";
@@ -129,11 +136,16 @@ function question2() {
         question3();
       } else {
         console.log("nope!");
+        count = count - 2;
+        if (count <= 0) {
+          timeTest = 0;
+        }
       }
     });
   }
   
 };
+var timeTest = 0;
 
 function question3() {
   pageHeading.innerText = "Question 3";
@@ -145,30 +157,46 @@ function question3() {
   ansButtons[7].remove();
 
   for (var i = 8; i < 12; i++) {
-      sectionTwo.appendChild(ansButtons[i]);
-      ansButtons[i].addEventListener("click", function(event) {
-        var ansId = event.target.getAttribute("data-ans-id");
-        console.log(event.target);
-        console.log("clicked");
-        console.log(ansId);
-        if (ansId == 9) {
-          console.log("eureka!");
-          saveScore();
-        } else {
-          console.log("nope!");
+    sectionTwo.appendChild(ansButtons[i]);
+    ansButtons[i].addEventListener("click", function(event) {
+      var ansId = event.target.getAttribute("data-ans-id");
+      console.log(event.target);
+      console.log("clicked");
+      console.log(ansId);
+      if (ansId == 9) {
+        console.log("eureka!");
+        timeTest = count; 
+        saveScore();
+        
+        console.log("your score is " + timeTest);
+      } else {
+        console.log("nope!");
+        count = count - 2;
+        if (count <= 0) {
+          timeTest = 0;
         }
-      });
-    }
+      }
+    });
+  }
 };
 
 function saveScore() {
+  if (count < 0) {
+    count = 0; 
+  } else {
+    count = 0;
+  }
+  
+  if (timeTest > 0) {
+    console.log("is true: " + timeTest);
+  }
+  for (var i = 0; i < 13; i++) {
+    ansButtons[i].remove();
+  }
+  
+  
   pageHeading.innerText = "Save Score";
   quizText.remove();
-  
-  ansButtons[8].remove();
-  ansButtons[9].remove();
-  ansButtons[10].remove();
-  ansButtons[11].remove();
 
 
   sectionTwo.appendChild(yourInitials);
@@ -179,7 +207,6 @@ function saveScore() {
   
 };
 
-
 function endPage() {
   yourInitials.remove();
   saveButton.remove();
@@ -189,7 +216,7 @@ function endPage() {
 
   var scoreItem = document.createElement("li");
   scoreItem.className = "score-item";
-  scoreItem.innerText =  (yourInitials.value);
+  scoreItem.innerText =  (yourInitials.value + " " + timeTest);
 
   scoreList.appendChild(scoreItem);
 
@@ -197,10 +224,9 @@ function endPage() {
 
   sectionThree.appendChild(restartButton);
   restartButton.addEventListener('click', startPage);
-}
+};
 
 
 
 startPage();
-//research data attributes- apply data att to button- whatever the class is should have same data att but each button has a different number
 //crate an array that has an array nested inside of it that stores the responses for the questionaire [question 1[incoorect, incorrect,correct,incoorect], question 2[...]]
