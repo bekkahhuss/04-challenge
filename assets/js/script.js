@@ -6,12 +6,17 @@ var timer = document.querySelector("#timer");
 
 //Page content variables 
 const pageHeading = document.createElement("h1");
+pageHeading.setAttribute("id", "page-heading");
 const quizText = document.createElement("p");
+quizText.setAttribute("id", "quiz-text");
 
 // buttons to navigate game 
 const easyButton = document.createElement("button");
+easyButton.className = "navBtn";
 const saveButton = document.createElement('button');
+saveButton.className = "navBtn";
 const restartButton = document.createElement('button');
+restartButton.className = "navBtn";
 
 //Answer buttons 
 
@@ -35,7 +40,7 @@ var count = 0;
 
 // When the start button is pushed leave start page, ask three questions, input initials to save score, view highscore and restart. 
 function startPage() {
-  pageHeading.innerText = "Coding Assessment";
+  pageHeading.innerText = "Coding Quiz!";
   sectionOne.appendChild(pageHeading);
   quizText.innerText = "Click Start to Begin";
   sectionOne.appendChild(quizText);

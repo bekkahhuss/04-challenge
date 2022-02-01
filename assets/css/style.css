@@ -1,0 +1,47 @@
+* {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 400px;
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+
+.sectionOne p {
+    color: rgb(228, 68, 206);
+}
+.sectionTwo {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;   
+   
+}
+
+.navBtn {
+    background-color: steelblue;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px;
+    color: white;
+}
+
+.ansBtn {
+    background-color: steelblue;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 300px;
+    margin: 10px;
+    color: white;
+}
+
+.scoreList {
+    margin-top: 0;
+
+}
